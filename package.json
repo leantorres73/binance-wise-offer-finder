@@ -1,0 +1,24 @@
+{
+  "name": "binance-wise-offer-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "node-telegram-bot-api": "^0.56.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leantorres73/binance-wise-offer-finder.git"
+  },
+  "author": "leantorres73",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leantorres73/binance-wise-offer-finder/issues"
+  },
+  "homepage": "https://github.com/leantorres73/binance-wise-offer-finder#readme"
+}
