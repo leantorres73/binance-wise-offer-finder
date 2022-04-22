@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { sendMessage } = require('./telegram');
 
+const cache = [];
+
 const headers = {
     "Accept": "*/*",
     "Accept-Encoding": "gzip, deflate, br",
@@ -40,7 +42,10 @@ const execute = async () => {
     );
     const goodOffers = responseData.data.data.filter(x => parseFloat(x.adv.price) <= parseFloat(process.env.PRICE));
     await Promise.all(goodOffers.map(async offer => {
-      await sendMessage(offer.adv);
+      if (!cache[offer.adv.advNo]) {
+        cache.push(offer.adv.advNo)
+        await sendMessage(offer.adv);
+      }
     }));
   } catch (err) {
     console.log(err);
@@ -51,6 +56,7 @@ const execute = async () => {
   const minutes = 10, interval = minutes * 60 * 1000;
   await execute();
   setInterval(async function() {
+    console.log(`Running ${new Date()}`)
       await execute();
   }, interval);
 })();
