@@ -43,7 +43,7 @@ const execute = async () => {
     const goodOffers = responseData.data.data.filter(x => parseFloat(x.adv.price) <= parseFloat(process.env.PRICE));
     await Promise.all(goodOffers.map(async offer => {
       if (!cache[offer.adv.advNo]) {
-        cache.push(offer.adv.advNo)
+        cache.push(offer.adv.advNo);
         await sendMessage(offer.adv);
       }
     }));
